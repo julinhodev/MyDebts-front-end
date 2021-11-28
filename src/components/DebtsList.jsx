@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-//import { router } from '../router/routers';
+import Debts from './Debts';
 
 const DebtsList = () => {
     const [debts, setDebt] = useState([]);
 
     const fetchDebts = async () => {
         const { data } = await axios.get('http://localhost/debts');
-        setDebt(data);
+        setDebt(data)
     };
 
     useEffect(() => fetchDebts(), []);
 
     return(
         <div className="debtlist-container">
-            <p>Debt List</p>
+            { debts.map(debt => <Debts key={debt._id} debts={debt} />) }
         </div>
     );
 };
