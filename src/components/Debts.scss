@@ -1,16 +1,11 @@
-div.debts-container {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
+td.debts-description {
+    text-align: start;
 }
 
-div.debts-descriptions {
-    font-size: 1.1rem;
+td.debts-td {
+    padding-top: 10px;
 }
 
-span.debts-description,
-span.debts-value,
-span.debts-installments,
-span.debts-description {
-    padding-right: 20px;
+span.debts-icons {
+    padding-left: 10px;
 }

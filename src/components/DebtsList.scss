@@ -3,3 +3,16 @@ div.debtlist-container {
     padding-top: 20px;
     max-width: 1000px;
 }
+
+table.debtlist-table{
+    width: 100%;
+    text-align: center;
+}
+
+th.debtlist-description {
+    text-align: start;
+}
+
+th.debtlist-th {
+    padding-bottom: 15px;
+}

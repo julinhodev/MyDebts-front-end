@@ -16,11 +16,27 @@ const DebtsList = () => {
     useEffect(() => fetchDebts(), []);
 
     return(
-        <div>
-            <div className="debtlist-container">
-                { debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#ee4035"/> : null)}
-                { debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#7bc043"/> : null)}
-            </div>
+        <div className="debtlist-container">
+            <table className="debtlist-table">
+                    <thead>
+                        <tr>
+                            <th className="debtlist-th debtlist-description" >Descrição</th>
+                            <th className="debtlist-th" >Valor</th>
+                            <th className="debtlist-th" >Parcelas</th>
+                            {/* <th className="debtlist-th" >Data</th> */}
+                            <th className="debtlist-th" >Opções</th>
+                            <th className="debtlist-th" >Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            { debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#ee4035"/> : null)}
+                        </tr>
+                        <tr>
+                            { debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#7bc043"/> : null)}
+                        </tr>
+                    </tbody>
+                </table>
         </div>
     );
 };
