@@ -18,7 +18,8 @@ const DebtsList = () => {
     return(
         <div>
             <div className="debtlist-container">
-                { debts.map(debt => <Debts key={debt._id} debts={debt} />) }
+                { debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#ee4035"/> : null)}
+                { debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#7bc043"/> : null)}
             </div>
         </div>
     );
