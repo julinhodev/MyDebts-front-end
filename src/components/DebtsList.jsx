@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import Debts from './Debts';
 
+import './DebtsList.scss';
+
 const DebtsList = () => {
     const [debts, setDebt] = useState([]);
 
@@ -14,8 +16,10 @@ const DebtsList = () => {
     useEffect(() => fetchDebts(), []);
 
     return(
-        <div className="debtlist-container">
-            { debts.map(debt => <Debts key={debt._id} debts={debt} />) }
+        <div>
+            <div className="debtlist-container">
+                { debts.map(debt => <Debts key={debt._id} debts={debt} />) }
+            </div>
         </div>
     );
 };
