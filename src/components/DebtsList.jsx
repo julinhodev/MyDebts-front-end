@@ -29,12 +29,8 @@ const DebtsList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
                             { debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#ee4035"/> : null)}
-                        </tr>
-                        <tr>
                             { debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#7bc043"/> : null)}
-                        </tr>
                     </tbody>
                 </table>
         </div>

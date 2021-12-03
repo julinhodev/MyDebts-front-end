@@ -13,6 +13,7 @@ const Debts = ({ debts, colorIcons }) => {
 
     return(
         <>
+            <tr>
             <td className="debts-td  debts-description" >{ debts.description }</td>
             <td className="debts-td" >{ `R$ ${debts.value.toFixed(2)}` }</td>
             <td className="debts-td" >{ `${debts.paidInstallments}/${debts.installments}` }</td>
@@ -25,6 +26,7 @@ const Debts = ({ debts, colorIcons }) => {
             <td className="debts-td" >
                 < BsFillCheckSquareFill size={20} color={colorIcons} />
             </td>
+            </tr>
         </>
     );
 };
