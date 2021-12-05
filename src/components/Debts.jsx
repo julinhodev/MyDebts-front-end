@@ -3,6 +3,8 @@ import { AiFillDelete } from 'react-icons/ai';
 
 import './Debts.scss';
 
+import DescriptionLength from '../model/DescriptionLength';
+
 const Debts = ({ debts, fetchDebts }) => {
 
     const numberLength = number => number < 10 ? `0${number}` : number;
@@ -29,7 +31,7 @@ const Debts = ({ debts, fetchDebts }) => {
         <div className="debt-item-container">
             <div className="debt-description">
                 <label className={ debts.paymentStatus ? 'checkbox-container-completed' : 'checkbox-container'}>
-                    <p>{debts.description}</p>
+                    <p>{DescriptionLength(debts.description)}</p>
                    <div className="debt-informations">
                     <input type="checkbox" defaultChecked={debts.paymentStatus} onChange={e => handleConfirmPayment(e)} />
                         <span className={debts.paymentStatus ? 'checkmark completed' : 'checkmark'} ></span>
