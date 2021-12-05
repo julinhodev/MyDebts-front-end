@@ -1,9 +1,7 @@
 /* #4a4e4d • #0e9aa7 • #3da4ab • #f6cd61 • #fe8a71 • #2ab7ca  */
-
-/* variables */
-
-$backgroud: #4a4e4d;
-$TextColor: #ffffff;
+/* VARIAVEIS */
+$background: linear-gradient(to right, #232526, #414345);
+$primary-text-color: #FFFFFF;
 
 
 * {
@@ -12,9 +10,9 @@ $TextColor: #ffffff;
   box-sizing: border-box;
 }
 
-body{
-  width: 100vw;
-  /* background: $backgroud; */
-  /* font-family: 'M PLUS 1 Code', sans-serif; */
-  font-family: Arial, Helvetica, sans-serif;
+body {
+  font-family: 'Archivo', sans-serif;
+  background: $background;
+  color: $primary-text-color;
+  overflow-y: hidden;
 }

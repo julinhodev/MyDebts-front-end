@@ -1,33 +1,45 @@
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { CgNotes } from 'react-icons/cg';
-import { BsFillCheckSquareFill } from 'react-icons/bs'
+import axios from 'axios';
+import { AiFillDelete } from 'react-icons/ai';
 
 import './Debts.scss';
 
-const Debts = ({ debts, colorIcons }) => {
+const Debts = ({ debts, fetchDebts }) => {
 
-    const date = new Date();
-    const dateDay = date.getUTCDay(debts.date);
-    const dateMonth = date.getUTCMonth(debts.date);
-    const dateYear = date.getUTCFullYear(debts.date);
+    const numberLength = number => number < 10 ? `0${number}` : number;
 
+    const handleConfirmPayment = async (e) => {
+        try {
+            await axios.patch(`http://localhost/debts/${debts._id}`, { paymentStatus: e.target.checked });
+            await fetchDebts();
+        } catch(error) {
+            console.log('Deu erro ao modificar o status de pagamento.');
+        }
+    };
+
+    const handleDeleteDebt = async () => {
+        try {
+            await axios.delete(`http://localhost/debts/${debts._id}`);
+            await fetchDebts();
+        } catch(error) {
+            console.log('Deu erro ao deleter o débito.');
+        }
+    };
+    
     return(
-        <>
-            <tr>
-            <td className="debts-td  debts-description" >{ debts.description }</td>
-            <td className="debts-td" >{ `R$ ${debts.value.toFixed(2)}` }</td>
-            <td className="debts-td" >{ `${debts.paidInstallments}/${debts.installments}` }</td>
-            {/* <td className="debts-td" >{ `${dateDay}/${dateMonth}/${dateYear}` }</td> */}
-            <td className="debts-td" >
-                <span className="debts-icons" >< AiFillEdit size={20} color=" #2ab7ca" /></span>
-                <span className="debts-icons" >< AiFillDelete size={20} color="#fe4a49" /></span>
-                <span className="debts-icons" > < CgNotes size={20} color="#4a4e4d" /></span>
-            </td>
-            <td className="debts-td" >
-                < BsFillCheckSquareFill size={20} color={colorIcons} />
-            </td>
-            </tr>
-        </>
+        <div className="debt-item-container">
+            <div className="debt-description">
+                <label className={ debts.paymentStatus ? 'checkbox-container-completed' : 'checkbox-container'}>
+                    <p>{debts.description}</p>
+                   <div className="debt-informations">
+                    <input type="checkbox" defaultChecked={debts.paymentStatus} onChange={e => handleConfirmPayment(e)} />
+                        <span className={debts.paymentStatus ? 'checkmark completed' : 'checkmark'} ></span>
+                        <span>{ `R$ ${debts.value.toFixed(2)}` }</span>
+                        <span>{ `${numberLength(debts.paidInstallments)}/${numberLength(debts.installments)}` }</span>
+                        <span className="delete" >< AiFillDelete size={20} color="#fe4a49" onClick={handleDeleteDebt} /></span>
+                    </div>
+                </label>
+            </div>
+        </div>
     );
 };
 

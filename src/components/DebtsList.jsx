@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Debts from './Debts';
+import CurrentMonth from './CurrentMonth';
 
 import './DebtsList.scss';
 
@@ -17,22 +18,17 @@ const DebtsList = () => {
 
     return(
         <div className="debtlist-container">
-            <table className="debtlist-table">
-                    <thead>
-                        <tr>
-                            <th className="debtlist-th debtlist-description" >Descrição</th>
-                            <th className="debtlist-th" >Valor</th>
-                            <th className="debtlist-th" >Parcelas</th>
-                            {/* <th className="debtlist-th" >Data</th> */}
-                            <th className="debtlist-th" >Opções</th>
-                            <th className="debtlist-th" >Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            { debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#ee4035"/> : null)}
-                            { debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} colorIcons="#7bc043"/> : null)}
-                    </tbody>
-                </table>
+            <CurrentMonth />
+            <div className="last-debts">
+                <div className="debts-list">
+                    { debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
+                </div>
+            </div>
+            <div className="debts-pay">
+                <div className="debts-list">
+                    { debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
+                </div>   
+            </div>
         </div>
     );
 };
