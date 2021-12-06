@@ -1,0 +1,14 @@
+div.button-constainer {
+    background-color: #00ffa3;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #0ea76f;
+    }
+
+    &:active {
+        background-color: #00ffa3;
+    }
+}

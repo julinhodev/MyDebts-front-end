@@ -5,10 +5,17 @@ div.debtlist-container {
     margin: auto;
     padding-top: 20px;
     max-width: 1000px;
+    height: calc(100vh - 60px);
+
+    .debtlist-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
 
     .last-debts {
-        flex: 1;
-        overflow-y: hidden;
+        overflow-y: auto;
         display: flex;
         flex-direction: column;
 
@@ -41,8 +48,14 @@ div.debtlist-container {
             overflow-y: auto;
             margin-top: 28px;
         }
-        
     }
+
+    .debts-sum {
+        margin-bottom: 10px;
+        color: #00ffa3;
+        font-size: 18px;
+    }
+
     .debts-pay {
         flex: 1;
         padding-top: 10px;

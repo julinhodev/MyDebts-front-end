@@ -41,7 +41,9 @@ const CurrentMonth = () => {
         case 11:
             date = 'Dezembro'
             break;
-    }
+        default:
+            break;            
+    };
 
     return(
         <div className="month-container">
