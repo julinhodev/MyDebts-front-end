@@ -5,6 +5,7 @@ import { RiPlayListAddLine } from 'react-icons/ri'
 import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
 import CustomButton from './CustomButton';
+import DebtsSum from './DebtsSum';
 
 import './DebtsList.scss';
 
@@ -34,11 +35,18 @@ const DebtsList = () => {
                     { debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
                 </div>   
             </div>
-            <div className="debts-sum">
-                   <span> Total a pagar: R$ { debts.reduce(( previosValue, currentValue ) => { return  previosValue += currentValue.value }, 0).toFixed(2) }</span>
+            <div className="debtssum-container">
+                <span className="debtssum-pay">
+                    {<DebtsSum description="Total pago: R$" value={debts.filter(debt => debt.paymentStatus).map(debt => debt.value)}/>}
+                </span>  
+                <span className="debtssum-notpay">
+                    {<DebtsSum description="Total a pagar: R$" value={debts.filter(debt => !debt.paymentStatus).map(debt => debt.value)}/>}
+                </span>  
             </div>
         </div>
     );
 };
 
 export default DebtsList;
+
+/* .reduce(( previosValue, currentValue ) => <DebtsSum description="Total a pagar: R$" value={currentValue}/>, 0) */
