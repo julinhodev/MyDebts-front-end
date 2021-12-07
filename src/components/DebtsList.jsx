@@ -37,10 +37,10 @@ const DebtsList = () => {
             </div>
             <div className="debtssum-container">
                 <span className="debtssum-pay">
-                    {<DebtsSum description="Total pago: R$" value={debts.filter(debt => debt.paymentStatus).map(debt => debt.value)}/>}
+                    {<DebtsSum description="Total pago:" value={debts.filter(debt => debt.paymentStatus).map(debt => debt.value)}/>}
                 </span>  
                 <span className="debtssum-notpay">
-                    {<DebtsSum description="Total a pagar: R$" value={debts.filter(debt => !debt.paymentStatus).map(debt => debt.value)}/>}
+                    {<DebtsSum description="Total a pagar:" value={debts.filter(debt => !debt.paymentStatus).map(debt => debt.value)}/>}
                 </span>  
             </div>
         </div>

@@ -4,6 +4,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import './Debts.scss';
 
 import DescriptionLength from '../model/DescriptionLength';
+import BRLFormat from '../model/BRLFormat';
 
 const Debts = ({ debts, fetchDebts }) => {
 
@@ -35,7 +36,7 @@ const Debts = ({ debts, fetchDebts }) => {
                    <div className="debt-informations">
                     <input type="checkbox" defaultChecked={debts.paymentStatus} onChange={e => handleConfirmPayment(e)} />
                         <span className={debts.paymentStatus ? 'checkmark completed' : 'checkmark'} ></span>
-                        <span>{ `R$ ${debts.value.toFixed(2)}` }</span>
+                        <span>{BRLFormat(debts.value)}</span>
                         <span>{ `${numberLength(debts.paidInstallments)}/${numberLength(debts.installments)}` }</span>
                         <span className="delete" >< AiFillDelete size={20} color="#fe4a49" onClick={handleDeleteDebt} /></span>
                     </div>
