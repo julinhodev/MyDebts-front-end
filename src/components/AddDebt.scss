@@ -1,0 +1,27 @@
+.add-debt-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 100%;
+
+    h2 {
+        text-align: center;
+        color: #00ffa3;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    div.debt-inputs {
+        display: flex;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    div.debt-inputs {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+  }

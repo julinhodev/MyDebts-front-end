@@ -9,6 +9,19 @@ $main-color: #00ffa3;
 
 .custom-input-container {
     position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    input[type=number] {
+        -moz-appearance:textfield;
+    }
 
     .custom-input {
         background: none;

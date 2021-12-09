@@ -3,6 +3,14 @@ div.button-constainer {
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
+    color: #232526;
+
+    span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2px;
+    }
 
     &:hover {
         background-color: #0ea76f;

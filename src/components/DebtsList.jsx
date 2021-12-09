@@ -6,6 +6,7 @@ import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
 import CustomButton from './CustomButton';
 import DebtsSum from './DebtsSum';
+import AddDebt from './AddDebt';
 
 import './DebtsList.scss';
 
@@ -21,8 +22,9 @@ const DebtsList = () => {
 
     return(
         <div className="debtlist-container">
+            <AddDebt />
             <div className="debtlist-button" >
-                <CustomButton value={<RiPlayListAddLine size={20} color="#232526"/>} />
+                <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>} />
                 <CurrentMonth />
             </div> 
             <div className="last-debts">

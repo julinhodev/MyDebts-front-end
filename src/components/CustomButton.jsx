@@ -1,9 +1,9 @@
 import './CustomButton.scss'
 
-const CustomButton = ({ value }) => {
+const CustomButton = ({ firstDescription, lastDescription }) => {
     return(
         <div className="button-constainer">
-            <span>{value}</span>
+            {lastDescription ? <span><span>{firstDescription}</span> <span>{lastDescription}</span></span> : <span>{firstDescription}</span>} 
         </div>
     );
 };
