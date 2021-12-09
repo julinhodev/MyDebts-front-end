@@ -22,7 +22,7 @@ const DebtsList = () => {
     return(
         <div className="debtlist-container">
             <div className="debtlist-button" >
-                <CustomButton value={<RiPlayListAddLine size={22} color="#232526"/>} />
+                <CustomButton value={<RiPlayListAddLine size={20} color="#232526"/>} />
                 <CurrentMonth />
             </div> 
             <div className="last-debts">
