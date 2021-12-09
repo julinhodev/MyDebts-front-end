@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { AiFillDelete } from 'react-icons/ai';
+import { useAlert } from 'react-alert'
 
 import './Debts.scss';
 
@@ -8,11 +9,14 @@ import BRLFormat from '../model/BRLFormat';
 
 const Debts = ({ debts, fetchDebts }) => {
 
+    const alert = useAlert();
+
     const numberLength = number => number < 10 ? `0${number}` : number;
 
     const handleConfirmPayment = async (e) => {
         try {
             await axios.patch(`http://localhost/debts/${debts._id}`, { paymentStatus: e.target.checked });
+            await alert.success('Divida paga com sucesso!');
             await fetchDebts();
         } catch(error) {
             console.log('Deu erro ao modificar o status de pagamento.');
@@ -22,6 +26,7 @@ const Debts = ({ debts, fetchDebts }) => {
     const handleDeleteDebt = async () => {
         try {
             await axios.delete(`http://localhost/debts/${debts._id}`);
+            await alert.success('Divida deletada com sucesso!');
             await fetchDebts();
         } catch(error) {
             console.log('Deu erro ao deleter o débito.');

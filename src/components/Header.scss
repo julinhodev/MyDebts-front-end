@@ -3,20 +3,28 @@ div.header-container {
     align-items: center;
     justify-content: center;
     height: 50px;
-    background-color: #00d1ff;
+    background-color: #00ffa3;
+    color: #414345;
+
 
     nav.nav-container {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        height: 80px;
-        width: 95%;
+        width: 80%;
     }
     
     span.header-logo {
-        color: #FFFFFF;
-        font-size: 2.5rem;
-        font-weight: bold;
-        cursor: pointer;
+        
+        img {
+           height: 50px;
+        }
     }
+
+    @media only screen and (max-width: 1000px) {
+        nav.nav-container {
+            width: 90%;
+        }
+      }
 }
 

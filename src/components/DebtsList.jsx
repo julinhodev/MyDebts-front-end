@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { RiPlayListAddLine } from 'react-icons/ri'
+import axios from 'axios';
 
 import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
@@ -22,7 +22,7 @@ const DebtsList = () => {
 
     return(
         <div className="debtlist-container">
-            <AddDebt />
+           {/*  <AddDebt /> */}
             <div className="debtlist-button" >
                 <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>} />
                 <CurrentMonth />
@@ -50,5 +50,3 @@ const DebtsList = () => {
 };
 
 export default DebtsList;
-
-/* .reduce(( previosValue, currentValue ) => <DebtsSum description="Total a pagar: R$" value={currentValue}/>, 0) */
