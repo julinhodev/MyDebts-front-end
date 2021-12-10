@@ -16,7 +16,7 @@ const Debts = ({ debts, fetchDebts }) => {
     const handleConfirmPayment = async (e) => {
         try {
             await axios.patch(`http://localhost/debts/${debts._id}`, { paymentStatus: e.target.checked });
-            await alert.success('Divida paga com sucesso!');
+            await alert.success(`Divida "${debts.description}" movimentada com sucesso!!!`);
             await fetchDebts();
         } catch(error) {
             console.log('Deu erro ao modificar o status de pagamento.');
@@ -43,9 +43,10 @@ const Debts = ({ debts, fetchDebts }) => {
                         <span className={debts.paymentStatus ? 'checkmark completed' : 'checkmark'} ></span>
                         <span>{BRLFormat(debts.value)}</span>
                         <span>{ `${numberLength(debts.paidInstallments)}/${numberLength(debts.installments)}` }</span>
-                        <span className="delete" >< AiFillDelete size={20} color="#fe4a49" onClick={handleDeleteDebt} /></span>
+                        
                     </div>
                 </label>
+                <span className="delete" >< AiFillDelete size={20} color="#fe4a49" onClick={handleDeleteDebt} /></span>
             </div>
         </div>
     );

@@ -15,7 +15,7 @@ const DebtsList = () => {
 
     const fetchDebts = async () => {
         const { data } = await axios.get('http://localhost/debts');
-        setDebt(data)
+        setDebt(data);
     };
 
     useEffect(() => fetchDebts(), []);
@@ -24,17 +24,17 @@ const DebtsList = () => {
         <div className="debtlist-container">
            {/*  <AddDebt /> */}
             <div className="debtlist-button" >
-                <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>} />
-                <CurrentMonth />
+                <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>}/>
+                <CurrentMonth/>
             </div> 
             <div className="last-debts">
                 <div className="debts-list">
-                    { debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
+                    {debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
                 </div>
             </div>
             <div className="debts-pay">
                 <div className="debts-list">
-                    { debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
+                    {debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
                 </div>   
             </div>
             <div className="debtssum-container">
