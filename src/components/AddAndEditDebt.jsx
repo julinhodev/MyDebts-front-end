@@ -7,10 +7,10 @@ import CustomButton from './CustomButton';
 
 const AddDebt = ({icon, lastDescription, title}) => {
     return(
-        <div className="add-debt-container" >
+        <div className="debt-container" >
             <h2>{title}</h2>
             <CustomInput label="Descrição" value={''} type="text"/>
-                <div className="add-debt-inputs">
+                <div className="debt-inputs">
                     <CustomInput label="Valor" value={''} type="number"/>
                     <CustomInput label="Parcelas" value={''} type="number"/>
                     <CustomInput label="Parcelas Pagas" value={''} type="number"/>

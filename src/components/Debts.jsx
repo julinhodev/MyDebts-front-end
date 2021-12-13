@@ -60,8 +60,7 @@ const Debts = ({ debts, fetchDebts }) => {
                     <input type="checkbox" defaultChecked={debts.paymentStatus} onChange={e => handleConfirmPayment(e)} />
                         <span className={debts.paymentStatus ? 'checkmark completed' : 'checkmark'} ></span>
                         <span>{BRLFormat(debts.value)}</span>
-                        <span>{ `${numberLength(debts.paidInstallments)}/${numberLength(debts.installments)}` }</span>
-                        
+                        <span>{ `${numberLength(debts.paidInstallments)}/${numberLength(debts.installments)}` }</span>     
                     </div>
                 </label>
                 <div className="debt-options">
