@@ -1,4 +1,4 @@
-.add-debt-container {
+debt-container {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -12,7 +12,7 @@
         font-size: 1.1rem;
     }
 
-    div.add-debt-inputs {
+    div.debt-inputs {
         display: flex;
         width: 100%;
     }

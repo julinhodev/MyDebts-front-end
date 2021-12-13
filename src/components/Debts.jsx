@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { AiFillDelete } from 'react-icons/ai';
+import { FaEdit } from 'react-icons/fa';
+import { CgNotes } from 'react-icons/cg';
 import { useAlert } from 'react-alert'
 
 import './Debts.scss';
@@ -32,6 +34,22 @@ const Debts = ({ debts, fetchDebts }) => {
             console.log('Deu erro ao deleter o débito.');
         }
     };
+
+    const handleEditDebt = async () => {
+        try {
+            alert.success('Função editar está desativado no momento!');
+        } catch(error) {
+            console.log('Deu erro ao deleter o débito.');
+        }
+    };
+
+    const handleEverything = async () => {
+        try {
+            alert.success('Função "Observações" está desativado no momento!');
+        } catch(error) {
+            console.log('Deu erro ao deleter o débito.');
+        }
+    };
     
     return(
         <div className="debt-item-container">
@@ -46,7 +64,11 @@ const Debts = ({ debts, fetchDebts }) => {
                         
                     </div>
                 </label>
-                <span className="delete" >< AiFillDelete size={20} color="#fe4a49" onClick={handleDeleteDebt} /></span>
+                <div className="debt-options">
+                    <span className="options" >< CgNotes size={20} color="#f6cd61" onClick={handleEverything} /></span>
+                    <span className="options" >< FaEdit size={20} color="#2ab7ca" onClick={handleEditDebt} /></span>
+                    <span className="options" >< AiFillDelete size={20} color="#fe4a49" onClick={handleDeleteDebt} /></span>
+                </div>
             </div>
         </div>
     );

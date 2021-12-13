@@ -25,9 +25,9 @@ const DebtsList = () => {
 
     return(
         <div className="debtlist-container">
-                <AddAndEditDebt icon={<RiAddBoxFill size={20} color="#232526"/> } lastDescription="Adicionar" title="Adicionar dívida" /> 
-                <AddAndEditDebt icon={<FaEdit size={20} color="#232526"/> } lastDescription="Editar" title="Editar dívida" /> 
-          {/*   <div className="debtlist-button" >
+{/*                 <AddAndEditDebt icon={<RiAddBoxFill size={20} color="#232526"/> } lastDescription="Adicionar" title="Adicionar dívida" /> 
+                <AddAndEditDebt icon={<FaEdit size={20} color="#232526"/> } lastDescription="Editar" title="Editar dívida" />  */}
+            <div className="debtlist-button" >
                 <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>}/>
                 <CurrentMonth/>
             </div> 
@@ -48,7 +48,7 @@ const DebtsList = () => {
                 <span className="debtssum-notpay">
                     {<DebtsSum description="Total a pagar:" value={debts.filter(debt => !debt.paymentStatus).map(debt => debt.value)}/>}
                 </span>  
-            </div> */}
+            </div>
         </div>
     );
 };

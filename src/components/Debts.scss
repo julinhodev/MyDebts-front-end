@@ -14,19 +14,24 @@
         }
     }
 
-    .delete {
-        padding-top: 1.5px;
-        padding-left: 60px;
-        margin-left: 18px;
+    div.debt-options {
+        display: flex;
+        margin-left: 100px;
 
-        &:hover {
-            cursor: pointer;
+        .options {
+            padding-left: 5px;
+            margin-left: 5px;
+    
+            &:hover {
+                cursor: pointer;
+            }
         }
+    
     }
 
     @media only screen and (max-width: 1000px){
-        .delete {
-            padding-left: 5px;
+        div.debt-options {
+            margin-left: 10px;
         }
     }
 }
