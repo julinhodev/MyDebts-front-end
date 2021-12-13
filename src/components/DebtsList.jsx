@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-import { RiPlayListAddLine } from 'react-icons/ri'
+import { RiPlayListAddLine, RiAddBoxFill } from 'react-icons/ri';
+import { FaEdit } from 'react-icons/fa';
 import axios from 'axios';
 
 import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
 import CustomButton from './CustomButton';
 import DebtsSum from './DebtsSum';
-import AddDebt from './AddDebt';
+import AddAndEditDebt from './AddAndEditDebt';
+
+
 
 import './DebtsList.scss';
 
@@ -22,8 +25,9 @@ const DebtsList = () => {
 
     return(
         <div className="debtlist-container">
-           {/*  <AddDebt /> */}
-            <div className="debtlist-button" >
+                <AddAndEditDebt icon={<RiAddBoxFill size={20} color="#232526"/> } lastDescription="Adicionar" title="Adicionar dívida" /> 
+                <AddAndEditDebt icon={<FaEdit size={20} color="#232526"/> } lastDescription="Editar" title="Editar dívida" /> 
+          {/*   <div className="debtlist-button" >
                 <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>}/>
                 <CurrentMonth/>
             </div> 
@@ -44,7 +48,7 @@ const DebtsList = () => {
                 <span className="debtssum-notpay">
                     {<DebtsSum description="Total a pagar:" value={debts.filter(debt => !debt.paymentStatus).map(debt => debt.value)}/>}
                 </span>  
-            </div>
+            </div> */}
         </div>
     );
 };
