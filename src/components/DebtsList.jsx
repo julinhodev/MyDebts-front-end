@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-import { RiPlayListAddLine, RiAddBoxFill } from 'react-icons/ri';
-import { FaEdit } from 'react-icons/fa';
+import { RiPlayListAddLine } from 'react-icons/ri';
 import axios from 'axios';
 
 import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
 import CustomButton from './CustomButton';
 import DebtsSum from './DebtsSum';
-import AddAndEditDebt from './AddAndEditDebt';
 import DebtEverything from './DebtEverything';
 
 
@@ -26,11 +24,7 @@ const DebtsList = () => {
 
     return(
         <div className="debtlist-container">
-                {/* 
-                <AddAndEditDebt icon={<RiAddBoxFill size={20} color="#232526"/> } lastDescription="Adicionar" title="Adicionar dívida" /> 
-                <AddAndEditDebt icon={<FaEdit size={20} color="#232526"/> } lastDescription="Editar" title="Editar dívida" />
-                <DebtEverything/>
-                */}   
+                {/*<DebtEverything/>*/}   
             <div className="debtlist-button" >
                 <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>}/>
                 <CurrentMonth/>
