@@ -3,7 +3,7 @@ div.debtlist-container {
     justify-content: space-between;
     flex-direction: column;
     margin: auto;
-    padding: 8px;
+    padding: 5px;
     max-width: 1000px;
     height: calc(100vh - 55px);
 
@@ -14,14 +14,17 @@ div.debtlist-container {
 
     }
 
+    .debts-pay,
     .last-debts {
-        overflow-y: auto;
+        overflow: auto;
         display: flex;
         flex-direction: column;
+        max-height: 50%;
 
         /* width */
         ::-webkit-scrollbar {
-            width: 5px;
+            width: 2px;
+            height: 2px;
         }
 
         /* Track */
@@ -43,6 +46,8 @@ div.debtlist-container {
             background: #555;
         }
 
+        
+
         .debts-list {
             align-items: center;
             overflow-y: auto;
@@ -50,11 +55,12 @@ div.debtlist-container {
         }
     }
 
-    .debtssum-container {
+
+    div.debtssum-container {
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
-        font-size: 18px;
+        margin-top: 5px;
         color: #00ffa3;
 
         .debtssum-pay {
@@ -73,6 +79,14 @@ div.debtlist-container {
         .debts-list {
             margin-top: 10px;
         }
+    }
+}
+
+@media only screen and (max-width: 550px){
+    div.debtssum-container {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px;
     }
 }
 

@@ -1,13 +1,14 @@
-.debt-item-container {
+div.debt-item-container {
     display: flex;
     align-items: center;
+    min-width: 550px;
 
     .debt-description {
         display: flex;
         width: 100%;
 
-        .debt-informations {
-            display: flex;
+       .debt-informations {
+             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 50%;
@@ -27,7 +28,7 @@
             }
         }
     
-    }
+    }        
 
     @media only screen and (max-width: 1000px){
         div.debt-options {
