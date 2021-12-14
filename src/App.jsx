@@ -1,14 +1,15 @@
-import DebtsList from './components/DebtsList';
+import {Routes, Route} from 'react-router-dom';
 
-import Header from './components/Header';
+import Home from './Pages/Home';
 
 import './App.scss';
 
 const App = () => {
   return(
     <div className="app-container">
-      <Header />
-      <DebtsList />
+      <Routes>
+        <Route path="/" element={ <Home /> } />
+      </Routes>
     </div>
   );
 };

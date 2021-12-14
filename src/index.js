@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
 
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
@@ -18,11 +19,12 @@ const options = {
 
 ReactDOM.render(
     <React.StrictMode>
-
+      <BrowserRouter>
       <AlertProvider template={AlertTemplate} {...options}>
-        <App />
+          <App />
       </AlertProvider>
-
+      </BrowserRouter>
+     
     </React.StrictMode>,
   document.getElementById('root')
 );
