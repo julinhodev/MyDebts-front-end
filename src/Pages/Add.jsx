@@ -7,7 +7,9 @@ import './Add.scss';
 const Add = () => {
     return(
         <div className="add-container">
-            <AddAndEditDebt icon={<RiAddBoxFill size={20} color="#232526"/> } lastDescription="Adicionar" title="Adicionar dívida" /> 
+            <div className="add-form">
+                <AddAndEditDebt icon={<RiAddBoxFill size={20} color="#232526"/> } lastDescription="Adicionar" title="Adicionar dívida" /> 
+            </div>
         </div>
     );
 };

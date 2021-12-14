@@ -7,7 +7,9 @@ import './Edit.scss';
 const Edit = () => {
     return(
         <div className="edit-container">
-            <AddAndEditDebt icon={<FaEdit size={20} color="#232526"/> } lastDescription="Editar" title="Editar dívida" /> 
+            <div className="edit-form">
+                <AddAndEditDebt icon={<FaEdit size={20} color="#232526"/> } lastDescription="Editar" title="Editar dívida" /> 
+            </div>
         </div>
     );
 };
