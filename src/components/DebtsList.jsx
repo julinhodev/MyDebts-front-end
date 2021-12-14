@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { RiPlayListAddLine } from 'react-icons/ri';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
@@ -8,16 +9,20 @@ import CustomButton from './CustomButton';
 import DebtsSum from './DebtsSum';
 import DebtEverything from './DebtEverything';
 
-
-
 import './DebtsList.scss';
 
 const DebtsList = () => {
     const [debts, setDebt] = useState([]);
 
+    const navigate = useNavigate();
+
     const fetchDebts = async () => {
         const { data } = await axios.get('http://localhost/debts');
         setDebt(data);
+    };
+
+    const handleAddList = () => {
+        navigate('/add');
     };
 
     useEffect(() => fetchDebts(), []);
@@ -26,7 +31,7 @@ const DebtsList = () => {
         <div className="debtlist-container">
                 {/*<DebtEverything/>*/}   
             <div className="debtlist-button" >
-                <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>}/>
+                <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>} onClick={handleAddList} />
                 <CurrentMonth/>
             </div> 
             <div className="last-debts">

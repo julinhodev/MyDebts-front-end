@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { AiFillDelete } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
 import { CgNotes } from 'react-icons/cg';
@@ -12,6 +13,7 @@ import BRLFormat from '../model/BRLFormat';
 const Debts = ({ debts, fetchDebts }) => {
 
     const alert = useAlert();
+    const navigate = useNavigate();
 
     const numberLength = number => number < 10 ? `0${number}` : number;
 
@@ -37,7 +39,7 @@ const Debts = ({ debts, fetchDebts }) => {
 
     const handleEditDebt = async () => {
         try {
-            alert.success('Função editar está desativado no momento!');
+            navigate('/edit');
         } catch(error) {
             console.log('Deu erro ao deleter o débito.');
         }
