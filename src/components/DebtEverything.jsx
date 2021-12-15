@@ -1,9 +1,10 @@
 import './DebtEverything';
 
-const DebtEverything = () => {
+const DebtEverything = ({Everything}) => {
     return(
         <div className="Everything-container">
-            
+            {Everything.description}
+            {Everything.value}
         </div>
     );
 };

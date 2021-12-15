@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { AiFillDelete } from 'react-icons/ai';
+import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { FaEdit } from 'react-icons/fa';
 import { CgNotes } from 'react-icons/cg';
-import { useAlert } from 'react-alert'
+import { useAlert } from 'react-alert';
 
 import './Debts.scss';
 
@@ -11,7 +11,6 @@ import DescriptionLength from '../model/DescriptionLength';
 import BRLFormat from '../model/BRLFormat';
 
 const Debts = ({ debts, fetchDebts }) => {
-
     const alert = useAlert();
     const navigate = useNavigate();
 
@@ -47,7 +46,7 @@ const Debts = ({ debts, fetchDebts }) => {
 
     const handleEverything = async () => {
         try {
-            alert.success('Função "Observações" está desativado no momento!');
+            navigate(`/everything/${debts.everything}`);
         } catch(error) {
             console.log('Deu erro ao deleter o débito.');
         }
@@ -68,7 +67,7 @@ const Debts = ({ debts, fetchDebts }) => {
                 <div className="debt-options">
                     <span className="options" >< CgNotes size={20} color="#f6cd61" onClick={handleEverything} /></span>
                     <span className="options" >< FaEdit size={20} color="#2ab7ca" onClick={handleEditDebt} /></span>
-                    <span className="options" >< AiFillDelete size={20} color="#fe4a49" onClick={handleDeleteDebt} /></span>
+                    <span className="options" >< RiDeleteBin5Fill size={20} color="#fe4a49" onClick={handleDeleteDebt} /></span>
                 </div>
             </div>
         </div>

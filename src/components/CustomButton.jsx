@@ -7,5 +7,4 @@ const CustomButton = ({ firstDescription, lastDescription, onClick }) => {
         </div>
     );
 };
-
 export default CustomButton;

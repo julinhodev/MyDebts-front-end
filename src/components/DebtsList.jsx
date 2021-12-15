@@ -7,7 +7,6 @@ import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
 import CustomButton from './CustomButton';
 import DebtsSum from './DebtsSum';
-import DebtEverything from './DebtEverything';
 
 import './DebtsList.scss';
 
@@ -28,8 +27,7 @@ const DebtsList = () => {
     useEffect(() => fetchDebts(), []);
 
     return(
-        <div className="debtlist-container">
-                {/*<DebtEverything/>*/}   
+        <div className="debtlist-container">  
             <div className="debtlist-button" >
                 <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>} onClick={handleAddList} />
                 <CurrentMonth/>
