@@ -8,7 +8,7 @@ const Add = () => {
     return(
         <div className="add-container">
             <div className="add-form">
-                <AddAndEditDebt icon={<RiAddBoxFill size={20} color="#232526"/> } lastDescription="Adicionar" title="Adicionar dívida" /> 
+                <AddAndEditDebt icon={<RiAddBoxFill size={20} color="#232526"/> } lastDescription="Adicionar" title="Adicionar dívida" click={true}/> 
             </div>
         </div>
     );

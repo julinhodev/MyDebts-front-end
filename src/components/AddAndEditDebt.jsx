@@ -8,11 +8,11 @@ import './AddAndEditDebt.scss';
 import CustomInput from './CustomInput';
 import CustomButton from './CustomButton';
 
-const AddDebt = ({icon, lastDescription, title}) => {
+const AddDebt = ({icon, lastDescription, title, click}) => {
     const navigate = useNavigate();
     const alert = useAlert();
 
-    const handleBtnAdd = () => navigate('/');
+    const handleBtnAddAndEdit = () => navigate('/');
 
     const [debtDescription, setDebtDescription] = useState('');
     const [debtValue, setDebtValue] = useState('');
@@ -29,7 +29,6 @@ const AddDebt = ({icon, lastDescription, title}) => {
     const handlePost = (item, desc) => item.length > 0 ? item : desc;
 
     const handleAddDebt = async () => {
-
         try{
             await axios.post('http://localhost/debts',
              {
@@ -40,11 +39,22 @@ const AddDebt = ({icon, lastDescription, title}) => {
                 everything: handlePost(debtEverything, 'Sem observação para essa dívida')
             });
             alert.success(`A dívida "${handlePost(debtDescription, 'Sem descrição.')}" foi adicionada com sucesso!`);
-            handleBtnAdd();
+            handleBtnAddAndEdit();
         } catch(error) {
-            console.log('Deu erro ao tentar adicionar uma divida');
+            alert.error('Deu erro ao tentar adicionar uma divida');
         }
     };
+
+    const handleEditDebt = () => {
+        try{
+           alert.error(`Ainda não está sendo possível editar uma divida :(`);
+           handleBtnAddAndEdit();
+        } catch(error) {
+            alert.error('Deu erro ao tentar adicionar uma divida');
+        }
+    };
+
+    const handleActionsAddAndEdit = () => click === true ? handleAddDebt() : handleEditDebt();
 
     return(
         <div className="debt-container" >
@@ -56,7 +66,7 @@ const AddDebt = ({icon, lastDescription, title}) => {
                     <CustomInput label="Parcelas Pagas" value={debtPaidInstallments} type="number" onChange={onChangePaidInstallments}/>
                 </div>
             <CustomInput label="Observações" value={debtEverything} type="text" onChange={onChangeEverything}/>
-            <CustomButton firstDescription={icon} lastDescription={lastDescription} onClick={handleAddDebt}/>
+            <CustomButton firstDescription={icon} lastDescription={lastDescription} onClick={handleActionsAddAndEdit}/>
         </div>
     );
 };
