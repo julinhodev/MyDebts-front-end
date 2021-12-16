@@ -1,10 +1,10 @@
 div.button-constainer {
-    background-color: #00ffa3;
+    background-color: #0090FF;
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
     color: #232526;
-    transition: all 0.5s;
+    transition: all 0.2s;
 
     span{
         display: flex;
@@ -14,10 +14,10 @@ div.button-constainer {
     }
 
     &:hover {
-        background-color: #0ea76f;
+        background-color: #70befa;
     }
 
     &:active {
-        background-color: #00ffa3;
+        background-color: #0090FF;
     }
 }

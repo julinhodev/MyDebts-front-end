@@ -12,7 +12,7 @@ const AddDebt = ({icon, lastDescription, title, click}) => {
     const navigate = useNavigate();
     const alert = useAlert();
 
-    const handleBtnAddAndEdit = () => navigate('/');
+    const handleBtnAddAndEdit = () => navigate('/debts');
 
     const [debtDescription, setDebtDescription] = useState('');
     const [debtValue, setDebtValue] = useState('');

@@ -1,6 +1,7 @@
 import {Routes, Route} from 'react-router-dom';
 
 import Home from './Pages/Home';
+import Debts from './Pages/Debts';
 import Add from './Pages/Add';
 import Edit from './Pages/Edit';
 import Everything from './Pages/Everything';
@@ -15,6 +16,7 @@ const App = () => {
       <Header />
         <Routes>
           <Route path="/" element={ <Home /> } />
+          <Route path="/debts" element={ <Debts /> } />
           <Route path="/add" element={ <Add /> } />
           <Route path="/edit" element={ <Edit /> } />
           <Route path="/everything/:description" element={ <Everything /> } />
