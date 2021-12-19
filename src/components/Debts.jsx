@@ -38,7 +38,7 @@ const Debts = ({ debts, fetchDebts }) => {
 
     const handleEditDebt = async () => {
         try {
-            navigate('/edit');
+            navigate(`/edit/${debts._id}`);
         } catch(error) {
             console.log('Deu erro ao deleter o débito.');
         }
@@ -65,9 +65,9 @@ const Debts = ({ debts, fetchDebts }) => {
                     </div>
                 </label>
                 <div className="debt-options">
-                    <span className="options" >< CgNotes size={20} color="#f6cd61" onClick={handleEverything} /></span>
-                    <span className="options" >< FaEdit size={20} color="#2ab7ca" onClick={handleEditDebt} /></span>
-                    <span className="options" >< RiDeleteBin5Fill size={20} color="#fe4a49" onClick={handleDeleteDebt} /></span>
+                    <span className="options" >< CgNotes size={20} color="#fdf498" onClick={handleEverything} /></span>
+                    <span className="options" >< FaEdit size={20} color="#f37736" onClick={handleEditDebt} /></span>
+                    <span className="options" >< RiDeleteBin5Fill size={20} color="#ee4035" onClick={handleDeleteDebt} /></span>
                 </div>
             </div>
         </div>

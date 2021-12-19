@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { RiPlayListAddLine } from 'react-icons/ri';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -15,21 +15,27 @@ const DebtsList = () => {
 
     const navigate = useNavigate();
 
-    const fetchDebts = async () => {
-        const { data } = await axios.get('http://localhost/debts');
-        setDebt(data);
-    };
+    const fetchDebts = useCallback(async () => {
+        try{
+            const { data } = await axios.get('http://localhost/debts');
+            setDebt(data);
+       }catch(_error){
+            console.log('Não foi possível recuperar as dívidas :(');
+       }
+    }, []);
 
     const handleAddList = () => {
         navigate('/add');
     };
 
-    useEffect(() => fetchDebts(), []);
+    const useMemoDebtsNotPay = useMemo(() => debts.filter(debt => !debt.paymentStatus), [debts]);
+    const useMemoDebtsPay = useMemo(() => debts.filter(debt => !debt.paymentStatus), [debts]);
+    useEffect(() => fetchDebts(), [fetchDebts]);
 
     return(
         <div className="debtlist-container">  
             <div className="debtlist-button" >
-                <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#232526"/>} onClick={handleAddList} />
+                <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#FFF"/>} onClick={handleAddList} />
                 <CurrentMonth/>
             </div> 
             <div className="last-debts">
@@ -44,10 +50,10 @@ const DebtsList = () => {
             </div>
             <div className="debtssum-container">
                 <span className="debtssum-pay">
-                    {<DebtsSum description="Total pago:" value={debts.filter(debt => debt.paymentStatus).map(debt => debt.value)}/>}
+                    {<DebtsSum description="Total pago:" value={useMemoDebtsPay.map(debt => debt.value)}/>}
                 </span>  
                 <span className="debtssum-notpay">
-                    {<DebtsSum description="Total a pagar:" value={debts.filter(debt => !debt.paymentStatus).map(debt => debt.value)}/>}
+                    {<DebtsSum description="Total a pagar:" value={useMemoDebtsNotPay.map(debt => debt.value)}/>}
                 </span>  
             </div>
         </div>

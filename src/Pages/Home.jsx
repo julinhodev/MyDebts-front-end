@@ -2,7 +2,6 @@ import './Home.scss';
 import imageHome from '../assets/images/logo.png';
 
 import CustomButton from '../components/CustomButton';
-import CustomInput from '../components/CustomInput';
 
 import { useNavigate } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
@@ -19,8 +18,6 @@ const Home = () => {
             </div>
             <div className="home-login">
                 <span className="home-button">
-                    <CustomInput label="e-mail" value="" type="text"/>
-                    <CustomInput label="Senha" value="" type="password"/>
                     <CustomButton firstDescription={<FaUser size={18} color="" />} lastDescription="Entrar" onClick={handleAccess} />
                 </span>
             </div>

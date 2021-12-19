@@ -16,7 +16,7 @@ const Header = () => {
                  <span className="header-logo" onClick={handleHeader} >
                     <h1>My Debts</h1>
                  </span>
-                 < AiOutlineMenu size={35} color="#414345" />
+                 < AiOutlineMenu size={35} color="#FFF" />
             </nav>
         </div>
     );
