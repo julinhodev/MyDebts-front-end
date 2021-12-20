@@ -46,7 +46,7 @@ const Debts = ({ debts, fetchDebts }) => {
 
     const handleEverything = async () => {
         try {
-            navigate(`/everything/${debts.everything}`);
+            navigate(`/everything/${debts._id}`);
         } catch(error) {
             console.log('Deu erro ao deleter o débito.');
         }

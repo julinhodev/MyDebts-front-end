@@ -9,7 +9,7 @@ const Everything = () => {
 
     return(
         <div className="everything-containe">
-            <DebtEverything Everything={params}/>
+            <DebtEverything id={params}/>
         </div>
     );
 };

@@ -1,0 +1,19 @@
+div.everything-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    div.everything-everything,
+    div.everything-value,
+    div.everything-paymentStatus,
+    div.everything-date {
+        display: flex;
+        align-items: center;
+        padding-bottom: 5px;
+
+        p {
+            padding-left: 10px;
+        }
+    }
+
+}

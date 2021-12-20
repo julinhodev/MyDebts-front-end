@@ -14,7 +14,6 @@ const AddDebt = ({icon, lastDescription, title, click}) => {
     const alert = useAlert();
     const params = useParams();
     const handleBtnAddAndEdit = () => navigate('/debts');
-
     useEffect(() => handleGetOneDebt());
 
     const [debtDescription, setDebtDescription] = useState('');
@@ -23,10 +22,7 @@ const AddDebt = ({icon, lastDescription, title, click}) => {
     const [debtPaidInstallments, setDebtPaidInstallments] = useState('');
     const [debtEverything, setDebtEverything] = useState('');
 
-    const onChangeDescription = e => {
-        setDebtDescription(e.target.value)
-    };
-    
+    const onChangeDescription = e => setDebtDescription(e.target.value);    
     const onChangeValue = e => setDebtValue(e.target.value);
     const onChangeInstallments = e => setDebtInstallments(e.target.value);
     const onChangePaidInstallments = e => setDebtPaidInstallments(e.target.value);
@@ -61,13 +57,6 @@ const AddDebt = ({icon, lastDescription, title, click}) => {
                 setDebtInstallments(data.installments);
                 setDebtPaidInstallments(data.paidInstallments);
                 setDebtEverything(data.everything);
-
-                console.log(debtDescription)
-                console.log(debtValue)
-                console.log(debtInstallments)
-                console.log(debtPaidInstallments)
-                console.log(debtEverything)
-
         } catch(error) {
             alert.error(error);
         }
@@ -84,11 +73,7 @@ const AddDebt = ({icon, lastDescription, title, click}) => {
                 everything: debtEverything
             });
             console.log(debtDescription)
-            console.log(debtValue)
-            console.log(debtInstallments)
-            console.log(debtPaidInstallments)
-            console.log(debtEverything)
-           alert.success(`Divida editada com sucesso!!!`);
+           alert.success(`A divida "${debtDescription}" foi editada com sucesso!!!`);
            handleBtnAddAndEdit();
         } catch(error) {
             alert.error('Deu erro ao tentar adicionar uma divida');
