@@ -5,13 +5,20 @@ div.debt-container {
     max-width: 100% ;
     padding: 5px;
 
-    h2 {
-        text-align: center;
-        color: #0090FF;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        font-size: 1.1rem;
+    div.teste {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+
+        h2 {
+            color: #0090FF;
+
+            font-size: 1.1rem;
+        }
     }
+
+    
 
     div.debt-inputs {
         display: flex;

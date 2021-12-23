@@ -4,16 +4,16 @@ import { useAlert } from 'react-alert';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
-import './AddAndEditDebt.scss';
+import './EditDebt.scss';
 
 import CustomInput from './CustomInput';
 import CustomButton from './CustomButton';
+import BtnHome from './BtnHome';
 
-const AddDebt = ({icon, lastDescription, title, click}) => {
+const AddDebt = ({icon, lastDescription, title}) => {
     const navigate = useNavigate();
     const alert = useAlert();
     const params = useParams();
-    const handleBtnAddAndEdit = () => navigate('/debts');
     useEffect(() => handleGetOneDebt());
 
     const [debtDescription, setDebtDescription] = useState('');
@@ -22,33 +22,15 @@ const AddDebt = ({icon, lastDescription, title, click}) => {
     const [debtPaidInstallments, setDebtPaidInstallments] = useState('');
     const [debtEverything, setDebtEverything] = useState('');
 
-    const onChangeDescription = e => setDebtDescription(e.target.value);    
+    const onChangeDescription = e => {
+        console.log(e.target.value)
+        setDebtDescription(e.target.value)
+    };    
     const onChangeValue = e => setDebtValue(e.target.value);
     const onChangeInstallments = e => setDebtInstallments(e.target.value);
     const onChangePaidInstallments = e => setDebtPaidInstallments(e.target.value);
     const onChangeEverything = e => setDebtEverything(e.target.value);
 
-    const handlePost = (item, desc) => item.length > 0 ? item : desc;
-    const handleActionsAddAndEdit = () => click === true ? handleAddDebt() : handleEditDebt();
-
-    const handleAddDebt = async () => {
-        try{
-            await axios.post('http://localhost/debts',
-             {
-                description: handlePost(debtDescription, 'Sem descrição.'),
-                value: handlePost(debtValue, 0),
-                installments: handlePost(debtInstallments, 0),
-                paidInstallments: handlePost(debtPaidInstallments, 0),
-                everything: handlePost(debtEverything, 'Sem observação para essa dívida')
-            });
-            alert.success(`A dívida "${handlePost(debtDescription, 'Sem descrição.')}" foi adicionada com sucesso!`);
-            handleBtnAddAndEdit();
-        } catch(error) {
-            alert.error('Deu erro ao tentar adicionar uma divida');
-        }
-    };
-
-    
     const handleGetOneDebt = async () => {
         try{
             const { data } = await axios.get(`http://localhost/debts/${params.id}`);
@@ -74,7 +56,7 @@ const AddDebt = ({icon, lastDescription, title, click}) => {
             });
             console.log(debtDescription)
            alert.success(`A divida "${debtDescription}" foi editada com sucesso!!!`);
-           handleBtnAddAndEdit();
+           navigate('/debts');
         } catch(error) {
             alert.error('Deu erro ao tentar adicionar uma divida');
         }
@@ -82,15 +64,18 @@ const AddDebt = ({icon, lastDescription, title, click}) => {
 
     return(
         <div className="debt-container" >
-            <h2>{title}</h2>
-            <CustomInput label="Descrição" value={debtDescription} type="text" onChange={onChangeDescription}/>
+           <div className="debt-header">
+                <h2>{title}</h2>
+                <BtnHome/>
+           </div>
+            <CustomInput label="Descrição" type="text" onChange={onChangeDescription} value={debtDescription} />
                 <div className="debt-inputs">
                     <CustomInput label="Valor" value={debtValue} type="number" onChange={onChangeValue} />
                     <CustomInput label="Parcelas" value={debtInstallments} type="number" onChange={onChangeInstallments}/>
                     <CustomInput label="Parcelas Pagas" value={debtPaidInstallments} type="number" onChange={onChangePaidInstallments}/>
                 </div>
             <CustomInput label="Observações" value={debtEverything} type="text" onChange={onChangeEverything}/>
-            <CustomButton firstDescription={icon} lastDescription={lastDescription} onClick={handleActionsAddAndEdit}/>
+            <CustomButton firstDescription={icon} lastDescription={lastDescription} onClick={handleEditDebt}/>
         </div>
     );
 };

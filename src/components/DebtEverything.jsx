@@ -8,9 +8,9 @@ import {
      HiEmojiHappy,
      HiEmojiSad
      } from "react-icons/hi"
-
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import BtnHome from './BtnHome';
 
 const DebtEverything = ({id}) => {
     const handleDate = date => date < 10 ? `0${date}` : date;
@@ -26,7 +26,6 @@ const DebtEverything = ({id}) => {
     const dateYear = date.getFullYear();
     const fullDate = `${handleDate(dateDay)}/${handleDate(dateMonth)}/${handleDate(dateYear)}`;
     
-
     
     useEffect(() => handleGetOneDebt());
 
@@ -44,7 +43,10 @@ const DebtEverything = ({id}) => {
 
     return(
         <div className="everything-container">
-            <CurrentMonth/>
+            <div className="everything-header">
+                <CurrentMonth/>
+                <BtnHome />
+            </div>
             <div className='everything-date' >
                 <HiOutlineCalendar size={25} color="#0090FF"/>
                 <p>{fullDate}</p>

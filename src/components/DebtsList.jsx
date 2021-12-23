@@ -3,6 +3,7 @@ import { RiPlayListAddLine } from 'react-icons/ri';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
 import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
 import CustomButton from './CustomButton';
@@ -24,12 +25,9 @@ const DebtsList = () => {
        }
     }, []);
 
-    const handleAddList = () => {
-        navigate('/add');
-    };
-
+    const handleAddList = () => navigate('/add');
     const useMemoDebtsNotPay = useMemo(() => debts.filter(debt => !debt.paymentStatus), [debts]);
-    const useMemoDebtsPay = useMemo(() => debts.filter(debt => !debt.paymentStatus), [debts]);
+    const useMemoDebtsPay = useMemo(() => debts.filter(debt => debt.paymentStatus), [debts]);
     useEffect(() => fetchDebts(), [fetchDebts]);
 
     return(

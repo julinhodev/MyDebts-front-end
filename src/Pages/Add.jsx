@@ -1,4 +1,4 @@
-import AddAndEditDebt from '../components/AddAndEditDebt';
+import AddDebt from '../components/AddDebt';
 
 import { RiAddBoxFill } from 'react-icons/ri';
 
@@ -8,7 +8,7 @@ const Add = () => {
     return(
         <div className="add-container">
             <div className="add-form">
-                <AddAndEditDebt icon={<RiAddBoxFill size={20} color="#FFFFFF"/> } lastDescription="Adicionar" title="Adicionar dívida" click={true}/> 
+                <AddDebt icon={<RiAddBoxFill size={20} color="#FFFFFF"/> } lastDescription="Adicionar" title="Adicionar dívida"/> 
             </div>
         </div>
     );
