@@ -48,7 +48,7 @@ const DebtEverything = ({id}) => {
     return(
         <div className="everything-container">
             <div className="everything-header">
-                <CurrentMonth/>
+                <CurrentMonth description="Estamos no mês de" />
                 <BtnHome />
             </div>
             <div className='everything-date' >

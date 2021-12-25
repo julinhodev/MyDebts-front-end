@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { RiPlayListAddFill } from 'react-icons/ri';
-import { HiChevronDoubleRight, HiChevronDoubleLeft } from 'react-icons/hi';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAlert } from 'react-alert';
+import { RiPlayListAddFill } from 'react-icons/ri';
+import { HiChevronDoubleRight, HiChevronDoubleLeft } from 'react-icons/hi';
 
 import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
@@ -13,8 +14,8 @@ import './DebtsList.scss';
 
 const DebtsList = () => {
     const [debts, setDebt] = useState([]);
-
     const navigate = useNavigate();
+    const alert = useAlert();
 
     const fetchDebts = useCallback(async () => {
         try{
@@ -34,10 +35,10 @@ const DebtsList = () => {
         <div className="debtlist-container">  
             <div className="debtlist-button" >
                 <CustomButton firstDescription={<RiPlayListAddFill size={20} color="#FFF"/>} onClick={handleAddList} />
-                <CurrentMonth /* forwardOrBack={-1} */ />
+                <CurrentMonth/>
                 <div className="debtlist-button-month">
-                    <span><CustomButton firstDescription={<HiChevronDoubleLeft size={20} color="#FFF"/>} onClick={() => {}} /></span>
-                    <span><CustomButton firstDescription={<HiChevronDoubleRight size={20} color="#FFF"/>} onClick={() => {}} /></span>
+                    <span><CustomButton firstDescription={<HiChevronDoubleLeft size={20} color="#FFF"/>} onClick={() => alert.error('Ainda não é possível voltar o mês!')} /></span>
+                    <span><CustomButton firstDescription={<HiChevronDoubleRight size={20} color="#FFF"/>} onClick={() => alert.error('Ainda não é possível avaçar o mês!')} /></span>
                 </div>
             </div> 
             <div className="last-debts">

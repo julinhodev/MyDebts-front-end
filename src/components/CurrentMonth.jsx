@@ -1,7 +1,7 @@
 import './CurrentMonth.scss';
 import { RiCalendarFill } from 'react-icons/ri';
 
-const CurrentMonth = ({forwardOrBack}) => {
+const CurrentMonth = ({forwardOrBack, description}) => {
 
     const newDate = () => {
         if(forwardOrBack){
@@ -58,7 +58,7 @@ const CurrentMonth = ({forwardOrBack}) => {
     return(
         <div className="month-container">
             <RiCalendarFill size={20} color="#0090FF"/>
-            <span>{date}</span>
+            <span>{description ? `${description} ${date}` : date}</span>
         </div>
     );
 }
