@@ -1,33 +1,35 @@
-import './DebtEverything.scss';
-import CurrentMonth from '../components/CurrentMonth'
-import BRLFormat from '../model/BRLFormat';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useAlert } from 'react-alert';
 import { GiPayMoney, GiReceiveMoney } from 'react-icons/gi';
 import { 
      HiAnnotation,
      HiOutlineCalendar,
      HiEmojiHappy,
      HiEmojiSad
-     } from "react-icons/hi"
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+     } from "react-icons/hi";
+
+import './DebtEverything.scss';
+import BRLFormat from '../model/BRLFormat';
 import BtnHome from './BtnHome';
+import CurrentMonth from '../components/CurrentMonth'
 
 const DebtEverything = ({id}) => {
-    const handleDate = date => date < 10 ? `0${date}` : date;
+
+    const alert = useAlert();
 
     const [debtEverything, setDebtEverything] = useState('');
     const [debtValue, setDebtValue] = useState('');
     const [debtDate, setDebtDate] = useState('');
     const [debtPaymentStatus, setDebtPaymetStatus] = useState('');
 
+    //Date
+    const handleDate = date => date < 10 ? `0${date}` : date;
     const date = new Date(debtDate);
     const dateDay = date.getDate() + 1;
     const dateMonth = date.getMonth() + 1;
     const dateYear = date.getFullYear();
     const fullDate = `${handleDate(dateDay)}/${handleDate(dateMonth)}/${handleDate(dateYear)}`;
-    
-    
-    useEffect(() => handleGetOneDebt());
 
     const handleGetOneDebt = async () => {
         try{
@@ -36,10 +38,12 @@ const DebtEverything = ({id}) => {
             setDebtValue(data.value);
             setDebtDate(data.date);
             setDebtPaymetStatus(data.paymentStatus);
-        } catch(error) {
-           console.log(error)
+        } catch(_error) {
+            alert('Não foi possível carregar os detalhes!');
         }
     };
+
+    useEffect(() => handleGetOneDebt());
 
     return(
         <div className="everything-container">

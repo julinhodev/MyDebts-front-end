@@ -1,8 +1,17 @@
 import './CurrentMonth.scss';
+import { RiCalendarFill } from 'react-icons/ri';
 
-const CurrentMonth = () => {
+const CurrentMonth = ({forwardOrBack}) => {
 
-    let date = new Date().getMonth();
+    const newDate = () => {
+        if(forwardOrBack){
+            return new Date().getMonth() + forwardOrBack;
+        } else {
+            return new Date().getMonth();
+        }
+    };
+
+    let date = newDate();
 
     switch(date){
         case 0:
@@ -42,12 +51,14 @@ const CurrentMonth = () => {
             date = 'Dezembro'
             break;
         default:
+            date = 'Erro ao carregar a data!'
             break;            
     };
 
     return(
         <div className="month-container">
-            <span>Referente ao mês de {date}</span>
+            <RiCalendarFill size={20} color="#0090FF"/>
+            <span>{date}</span>
         </div>
     );
 }

@@ -1,15 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 import { useAlert } from 'react-alert';
 import CustomInput from './CustomInput';
 import CustomButton from './CustomButton';
 import BtnHome from './BtnHome';
 
-import './AddDebt.scss';
+import './AddAndEditDebt.scss';
 
-const AddDebt = ({icon, lastDescription, title}) => {
+const AddAndEditDebt = ({icon, lastDescription, title, actionEdit}) => {
+
+    const alert = useAlert();
+    const navigate = useNavigate();
+    const params = useParams();
+
     const [debtDescription, setDebtDescription] = useState('');
     const [debtValue, setDebtValue] = useState('');
     const [debtInstallments, setDebtInstallments] = useState('');
@@ -23,10 +29,7 @@ const AddDebt = ({icon, lastDescription, title}) => {
     const onChangePaidInstallments = e => setDebtPaidInstallments(e.target.value);
     const onChangeEverything = e => setDebtEverything(e.target.value);
 
-    const alert = useAlert();
-
-    const navigate = useNavigate();
-
+    // Filter Description and Everything
     const handleFilterString = (value, valueLength, errorMessage) => {
         if(typeof value === 'string' && value.length >= valueLength){
             return value;
@@ -35,8 +38,12 @@ const AddDebt = ({icon, lastDescription, title}) => {
         }
     };
 
+    // Filter Value, Installments and paidInstallments
     const handleFilterNumber = value => value ? value : 0;
 
+    // Functions Add and Edit Debt
+
+    // Add Debt
     const handleAddDebt = async () => {
         try{
             await axios.post('http://localhost/debts',
@@ -54,6 +61,43 @@ const AddDebt = ({icon, lastDescription, title}) => {
         }
     };
 
+    // Edit Debt
+    const handleEditDebt = async () => {
+        try{
+            await axios.patch(`http://localhost/debts/${params.id}`,
+             {
+                description: debtDescription,
+                value: debtValue,
+                installments: debtInstallments,
+                paidInstallments: debtPaidInstallments,
+                everything: debtEverything
+            });
+           alert.success(`A divida "${debtDescription}" foi editada com sucesso!!!`);
+           navigate('/debts');
+        } catch(error) {
+            alert.error('Deu erro ao tentar adicionar uma divida');
+        }
+    };
+
+    // Get Debt
+    const handleGetOneDebt = async () => {
+        try{
+            const { data } = await axios.get(`http://localhost/debts/${params.id}`);
+                setDebtDescription(data.description);
+                setDebtValue(data.value);
+                setDebtInstallments(data.installments);
+                setDebtPaidInstallments(data.paidInstallments);
+                setDebtEverything(data.everything);
+        } catch(error) {
+            alert.error(error);
+        }
+    };
+
+    // Action Add or Edit
+    const handleActionAddOrEdit = () => actionEdit ? handleEditDebt() : handleAddDebt();
+    const handleActionGetOneDebt = () => actionEdit ? handleGetOneDebt() : null;
+
+    useEffect(() => handleActionGetOneDebt());
 
     return(
         <div className="debt-container" >
@@ -68,9 +112,9 @@ const AddDebt = ({icon, lastDescription, title}) => {
                     <CustomInput label="Parcelas Pagas" value={debtPaidInstallments} type="number" onChange={onChangePaidInstallments}/>
                 </div>
             <CustomInput label="Observações" value={debtEverything} type="text" onChange={onChangeEverything}/>
-            <CustomButton firstDescription={icon} lastDescription={lastDescription} onClick={handleAddDebt}/>
+            <CustomButton firstDescription={icon} lastDescription={lastDescription} onClick={handleActionAddOrEdit}/>
         </div>
     );
 };
 
-export default AddDebt;
+export default AddAndEditDebt;

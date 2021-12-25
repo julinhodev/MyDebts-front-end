@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { RiPlayListAddLine } from 'react-icons/ri';
+import { RiPlayListAddFill } from 'react-icons/ri';
+import { HiChevronDoubleRight, HiChevronDoubleLeft } from 'react-icons/hi';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
 
 import Debts from './Debts';
 import CurrentMonth from './CurrentMonth';
@@ -33,8 +33,12 @@ const DebtsList = () => {
     return(
         <div className="debtlist-container">  
             <div className="debtlist-button" >
-                <CustomButton firstDescription={<RiPlayListAddLine size={20} color="#FFF"/>} onClick={handleAddList} />
-                <CurrentMonth/>
+                <CustomButton firstDescription={<RiPlayListAddFill size={20} color="#FFF"/>} onClick={handleAddList} />
+                <CurrentMonth /* forwardOrBack={-1} */ />
+                <div className="debtlist-button-month">
+                    <span><CustomButton firstDescription={<HiChevronDoubleLeft size={20} color="#FFF"/>} onClick={() => {}} /></span>
+                    <span><CustomButton firstDescription={<HiChevronDoubleRight size={20} color="#FFF"/>} onClick={() => {}} /></span>
+                </div>
             </div> 
             <div className="last-debts">
                 <div className="debts-list">

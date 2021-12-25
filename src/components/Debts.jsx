@@ -4,11 +4,11 @@ import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { FaEdit } from 'react-icons/fa';
 import { CgNotes } from 'react-icons/cg';
 import { useAlert } from 'react-alert';
-
-import './Debts.scss';
-
+// Treatments
 import DescriptionLength from '../model/DescriptionLength';
 import BRLFormat from '../model/BRLFormat';
+
+import './Debts.scss';
 
 const Debts = ({ debts, fetchDebts }) => {
     const alert = useAlert();
@@ -65,8 +65,8 @@ const Debts = ({ debts, fetchDebts }) => {
                     </div>
                 </label>
                 <div className="debt-options">
-                    <span className="options" >< CgNotes size={20} color="#fdf498" onClick={handleEverything} /></span>
-                    <span className="options" >< FaEdit size={20} color="#f37736" onClick={handleEditDebt} /></span>
+                    <span className="options" >< CgNotes size={20} color="#6497b1" onClick={handleEverything} /></span>
+                    <span className="options" >< FaEdit size={20} color="#b3cde0" onClick={handleEditDebt} /></span>
                     <span className="options" >< RiDeleteBin5Fill size={20} color="#ee4035" onClick={handleDeleteDebt} /></span>
                 </div>
             </div>

@@ -7,10 +7,18 @@ div.debtlist-container {
     max-width: 1000px;
     height: calc(100vh - 55px);
 
-    .debtlist-button {
+    div.debtlist-button {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        div.debtlist-button-month {
+            display: flex;
+
+            span {
+                margin-left: 5px;
+            }
+        }
 
     }
 
