@@ -90,7 +90,7 @@ const AddAndEditDebt = ({icon, lastDescription, title, actionEdit}) => {
                 setDebtEverything(data.everything);
         } catch(error) {
             alert.error(error);
-        }
+        };
     };
 
     // Action Add or Edit
