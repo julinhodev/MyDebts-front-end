@@ -18,7 +18,7 @@ const Debts = ({ debts, fetchDebts }) => {
 
     const handleConfirmPayment = async (e) => {
         try {
-            await axios.patch(`http://localhost/debts/${debts._id}`, { paymentStatus: e.target.checked });
+            await axios.patch(`${process.env.REACT_APP_API_URL}/debts/${debts._id}`, { paymentStatus: e.target.checked });
             await alert.success(`Divida "${debts.description}" movimentada com sucesso!!!`);
             await fetchDebts();
         } catch(error) {
@@ -28,7 +28,7 @@ const Debts = ({ debts, fetchDebts }) => {
 
     const handleDeleteDebt = async () => {
         try {
-            await axios.delete(`http://localhost/debts/${debts._id}`);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/debts/${debts._id}`);
             await alert.success('Divida deletada com sucesso!');
             await fetchDebts();
         } catch(error) {

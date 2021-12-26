@@ -19,7 +19,7 @@ const DebtsList = () => {
 
     const fetchDebts = useCallback(async () => {
         try{
-            const { data } = await axios.get('http://localhost/debts');
+            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/debts`);
             setDebt(data);
        }catch(_error){
             console.log('Não foi possível recuperar as dívidas :(');

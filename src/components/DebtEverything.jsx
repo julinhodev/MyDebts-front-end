@@ -33,7 +33,7 @@ const DebtEverything = ({id}) => {
 
     const handleGetOneDebt = async () => {
         try{
-            const { data } = await axios.get(`http://localhost/debts/${id.id}`);
+            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/debts/${id.id}`);
             setDebtEverything(data.everything);
             setDebtValue(data.value);
             setDebtDate(data.date);

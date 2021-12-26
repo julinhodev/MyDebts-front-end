@@ -46,7 +46,7 @@ const AddAndEditDebt = ({icon, lastDescription, title, actionEdit}) => {
     // Add Debt
     const handleAddDebt = async () => {
         try{
-            await axios.post('http://localhost/debts',
+            await axios.post(`${process.env.REACT_APP_API_URL}/debts`,
              {
                 description: handleFilterString(debtDescription, 5, 'Descrição'),
                 value: handleFilterNumber(debtValue),
@@ -64,7 +64,7 @@ const AddAndEditDebt = ({icon, lastDescription, title, actionEdit}) => {
     // Edit Debt
     const handleEditDebt = async () => {
         try{
-            await axios.patch(`http://localhost/debts/${params.id}`,
+            await axios.patch(`${process.env.REACT_APP_API_URL}/debts/${params.id}`,
              {
                 description: debtDescription,
                 value: debtValue,
@@ -82,7 +82,7 @@ const AddAndEditDebt = ({icon, lastDescription, title, actionEdit}) => {
     // Get Debt
     const handleGetOneDebt = async () => {
         try{
-            const { data } = await axios.get(`http://localhost/debts/${params.id}`);
+            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/debts/${params.id}`);
                 setDebtDescription(data.description);
                 setDebtValue(data.value);
                 setDebtInstallments(data.installments);
