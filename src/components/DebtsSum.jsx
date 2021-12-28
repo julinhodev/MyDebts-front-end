@@ -1,4 +1,4 @@
-import './DebtsSum.scss';
+
 import BRLFormat from '../model/BRLFormat';
 
 const DebtsSum = ({description, value}) => {

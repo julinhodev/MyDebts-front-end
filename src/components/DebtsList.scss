@@ -56,10 +56,15 @@ div.debtlist-container {
 
         
 
-        .debts-list {
+        div.debts-list {
             align-items: center;
             overflow-y: auto;
             margin-top: 28px;
+
+            span {
+                display: flex;
+                justify-content: center;
+            }
         }
     }
 
@@ -87,6 +92,11 @@ div.debtlist-container {
         .debts-list {
             margin-top: 10px;
         }
+    }
+
+    hr {
+        margin-top: 10px;
+        opacity: 0.1;
     }
 }
 

@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from 'react-alert';
+import ReactLoading from 'react-loading';
 import { RiPlayListAddFill } from 'react-icons/ri';
 import { HiChevronDoubleRight, HiChevronDoubleLeft } from 'react-icons/hi';
 
@@ -25,7 +26,7 @@ const DebtsList = () => {
             console.log('Não foi possível recuperar as dívidas :(');
        }
     }, []);
-
+<ReactLoading type={'bars'} color="#00ffa3"/>
     const handleAddList = () => navigate('/add');
     const useMemoDebtsNotPay = useMemo(() => debts.filter(debt => !debt.paymentStatus), [debts]);
     const useMemoDebtsPay = useMemo(() => debts.filter(debt => debt.paymentStatus), [debts]);
@@ -43,12 +44,17 @@ const DebtsList = () => {
             </div> 
             <div className="last-debts">
                 <div className="debts-list">
-                    {debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
+                    {debts.length === 0 ? <span><ReactLoading type={'bars'} color="#ee4035"/></span>
+                        : 
+                    debts.map(debt => !debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
                 </div>
             </div>
+            <hr/>
             <div className="debts-pay">
                 <div className="debts-list">
-                    {debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
+                    {debts.length === 0 ? <span><ReactLoading type={'bars'} color="#00ffa3"/></span>
+                        : 
+                    debts.map(debt => debt.paymentStatus ? <Debts key={debt._id} debts={debt} fetchDebts={fetchDebts}/> : null)}
                 </div>   
             </div>
             <div className="debtssum-container">
